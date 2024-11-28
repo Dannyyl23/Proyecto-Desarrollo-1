@@ -1,33 +1,33 @@
 -- Tabla Películas
 CREATE TABLE Peliculas (
-    id_pelicula INT PRIMARY KEY AUTO_INCREMENT,
+    id_pelicula INT PRIMARY KEY,
     titulo VARCHAR(255) NOT NULL,
     descripcion TEXT,
-    duracion INT,  -- en minutos
+    duracion INT,
     clasificacion VARCHAR(50),
     genero VARCHAR(100)
 );
 
 -- Tabla Salas
 CREATE TABLE Salas (
-    id_sala INT PRIMARY KEY AUTO_INCREMENT,
+    id_sala INT PRIMARY KEY ,
     nombre VARCHAR(100) NOT NULL,
     capacidad INT,
-    tipo VARCHAR(50)  -- Ejemplo: "2D", "3D"
+    tipo VARCHAR(50)
 );
 
 -- Tabla Sillas
 CREATE TABLE Sillas (
-    id_silla INT PRIMARY KEY AUTO_INCREMENT,
+    id_silla INT PRIMARY KEY ,
     id_sala INT,
     numero_asiento INT,
-    estado VARCHAR(20),  -- Puede ser "disponible", "reservado", "ocupado"
+    estado VARCHAR(20),
     FOREIGN KEY (id_sala) REFERENCES Salas(id_sala)
 );
 
 -- Tabla Funciones
 CREATE TABLE Funciones (
-    id_funcion INT PRIMARY KEY AUTO_INCREMENT,
+    id_funcion INT PRIMARY KEY ,
     id_pelicula INT,
     id_sala INT,
     fecha_hora DATETIME,
@@ -37,7 +37,7 @@ CREATE TABLE Funciones (
 
 -- Tabla Usuarios
 CREATE TABLE Usuarios (
-    id_usuario INT PRIMARY KEY AUTO_INCREMENT,
+    id_usuario INT PRIMARY KEY,
     nombre VARCHAR(255),
     correo VARCHAR(255) UNIQUE,
     contrasena VARCHAR(255),
@@ -46,7 +46,7 @@ CREATE TABLE Usuarios (
 
 -- Tabla Ventas de Boletos
 CREATE TABLE Ventas_Boletos (
-    id_venta INT PRIMARY KEY AUTO_INCREMENT,
+    id_venta INT PRIMARY KEY ,
     id_funcion INT,
     id_usuario INT,
     fecha_venta DATETIME,
@@ -57,7 +57,7 @@ CREATE TABLE Ventas_Boletos (
 
 -- Tabla Boletos
 CREATE TABLE Boletos (
-    id_boleto INT PRIMARY KEY AUTO_INCREMENT,
+    id_boleto INT PRIMARY KEY,
     id_venta INT,
     id_silla INT,
     precio DECIMAL(10, 2),
